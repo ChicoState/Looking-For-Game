@@ -19,5 +19,6 @@ from core import views as core_views
 
 urlpatterns = [
     path('', core_views.home),
+    path('lfg/', core_views.lfg),
     path('admin/', admin.site.urls),
 ]
