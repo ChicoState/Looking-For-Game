@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/lfg">LFG</a>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Filler Text</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/">Filler Text</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/">Profile</a>
+      </li>
+
+
+      <li class="nav-item">
+        <a class="nav-link" href="/admin" target="_blank">Admin</a>
+      </li>
+      {% if user.is_authenticated %}
+          <li>
+            <!-- <button type="button" class="btn btn-outline-caution btn-sm"> -->
+              <a class="nav-link" href="/logout">Logout ({{user.username}})</a>
+            <!-- </button> -->
+
+          </li>
+      {% else %}
+          <li>
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+      {% endif %}
+  </div>
+</nav>
