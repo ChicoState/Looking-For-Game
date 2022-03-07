@@ -21,4 +21,8 @@ urlpatterns = [
     path('', core_views.home),
     path('lfg/', core_views.lfg),
     path('admin/', admin.site.urls),
+    path('join/', core_views.join),
+    path('login/', core_views.user_login),
+    path('logout/', core_views.user_logout)
+
 ]
