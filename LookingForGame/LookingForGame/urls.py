@@ -24,6 +24,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('join/', core_views.join),
     path('login/', core_views.user_login),
-    path('logout/', core_views.user_logout)
-
+    path('logout/', core_views.user_logout),
+    path('create_group/', core_views.create_group)
 ]
