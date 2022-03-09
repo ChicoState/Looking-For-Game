@@ -4,6 +4,9 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.template.defaulttags import register
 
+from . import models
+from . import forms
+
 
 def home(request):
     return render(request, "core/home.html")
@@ -69,3 +72,22 @@ def user_logout(request):
     logout(request)
     # Return to homepage.
     return redirect("/")
+
+@login_required(login_url='/login/')
+def create_group(request):
+    if (request.method == "POST"):
+        group_form = forms.CreateGroupForm(request.POST)
+        if (group_form.is_valid()):
+            # Save form data to DB
+            user = group_form.save()
+            user.save()
+            return redirect("/")
+        else:
+            # Form invalid, print errors to console
+            page_data = { "group_form": group_form }
+            return render(request, 'core/create_group.html', page_data)
+    else:
+        group_form = forms.CreateGroupForm()
+        page_data = { "group_form": group_form }
+        return render(request, 'core/create_group.html', page_data)
+
