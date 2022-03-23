@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    {% include "core/links.html" %}
+    <title></title>
+  </head>
+  <body>
+    {% include "core/navbar.html" %}
+
+    <div class="User Preferences">
+      <h2>Preferences</h2>
+      <div>
+        {% if not user %}
+          <p>Please update your preferences.</p>
+        {% else %}
+        <form>
+          <div class="form-group row">
+            <label for="staticName" class="col-sm-2 col-form-label">Name</label>
+            <div class="col-sm-10">
+              <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{ user }}">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="staticPublicUsername" class="col-sm-2 col-form-label">Public Username</label>
+            <div class="col-sm-10">
+              <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{ username }}">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+              <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{ email }}">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="PLACEHOLDER1" class="col-sm-2 col-form-label">PLACEHOLDER</label>
+            <div class="col-sm-10">
+              <input type="text" readonly class="form-control-plaintext" id="PLACEHOLDER1" value="PLACEHOLDER">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="PLACEHOLDER2" class="col-sm-2 col-form-label">PLACEHOLDER</label>
+            <div class="col-sm-10">
+              <input type="text" readonly class="form-control-plaintext" id="PLACEHOLDER2" value="PLACEHOLDER">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="PLACEHOLDER3" class="col-sm-2 col-form-label">PLACEHOLDER</label>
+            <div class="col-sm-10">
+              <input type="text" readonly class="form-control-plaintext" id="PLACEHOLDER3" value="PLACEHOLDER">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="PLACEHOLDER4" class="col-sm-2 col-form-label">PLACEHOLDER</label>
+            <div class="col-sm-10">
+              <input type="text" readonly class="form-control-plaintext" id="PLACEHOLDER4" value="PLACEHOLDER">
+            </div>
+          </div>
+
+        </form>
+            <!-- <li>{{ user }}'s preferences</li>
+            <li>Username: {{ username }}</li>
+            <li>Email: {{ email }}</li>
+            <li></li> -->
+
+        {% endif %}
+      </div>
+      <a href="/preferences/">Change Preferences</a>
+    </div>
+
+    <div class="todo">
+      <p>TODO: Finalize user preference options and update the model</p>
+    </div>
+  </body>
+  <script type="text/javascript">
+    mylist = `{{ page_data|safe }}`
+    console.log(mylist)
+  </script>
+</html>
