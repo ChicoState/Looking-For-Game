@@ -3,19 +3,23 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.template.defaulttags import register
-
+from core.models import Group
 from . import models
 from . import forms
 
-
 def home(request):
+
     return render(request, "core/home.html")
 
 def about_us(request):
     return render(request, "core/about.html")
-def lfg(request):
-    return render(request, "core/lfg.html")
 
+def lfg(request):
+    groups = Group.objects.all().values()
+    print(groups)
+    page_data = {'test': 'succeeded', 'test2': 'succeeded'}
+    context = {'page_data' : groups}
+    return render(request, "core/lfg.html", context)
 
 def join(request):
     if (request.method == "POST"):
@@ -90,4 +94,3 @@ def create_group(request):
         group_form = forms.CreateGroupForm()
         page_data = { "group_form": group_form }
         return render(request, 'core/create_group.html', page_data)
-

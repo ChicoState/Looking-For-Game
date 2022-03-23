@@ -8,12 +8,35 @@
   </head>
   <body>
     {% include "core/navbar.html" %}
+    <form method="GET" action="/user/">
+      <input type="submit" class="btn-sm btn-dark" value="View Preferences">
+    </form>
+    <br>
+    <form method="GET" action="/preferences/">
+      <input type="submit" class="btn-sm btn-dark" value="Change Preferences">
+    </form>
+    <!-- <a href="user/">view preferences</a> -->
+    <!-- <a href="preferences/">change preferences</a> -->
+    <br>
     Contributors:
-    1. Jonathan Phan
-    2. Joshua Pineda
-    3. Juan Palos Nava
-    4. Reed Lagomarsino
-    5. Spencer Leff
-    6. Tai Masuda
+    <ul>
+      <li>1. Jonathan Phan</li>
+      <li>2. Joshua Pineda</li>
+      <li>3. Juan Palos Nava</li>
+      <li>4. Reed Lagomarsino</li>
+      <li>5. Spencer Leff</li>
+      <li>6. Tai Masuda</li>
+    </ul>
+
+
+    <div class="todo">
+      <p>TODO: Show user pending group invites, requests to join your games, and games the user created, and friend list</p>
+    </div>
+
+
+
+
+
+
   </body>
 </html>

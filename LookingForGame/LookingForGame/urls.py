@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from core import views as core_views
+from user import views as user_views
 
 urlpatterns = [
     path('', core_views.home),
@@ -25,5 +26,7 @@ urlpatterns = [
     path('join/', core_views.join),
     path('login/', core_views.user_login),
     path('logout/', core_views.user_logout),
-    path('create_group/', core_views.create_group)
+    path('create_group/', core_views.create_group),
+    path('user/', user_views.user),
+    path('preferences/', user_views.preferences)
 ]
