@@ -13,3 +13,9 @@ class Group(models.Model):
         experience_level = models.CharField(max_length = 240)
         meeting_frequencies = models.CharField(max_length = 240)
         group_description = models.CharField(max_length = 240)
+        members = models.ManyToManyField(UserProfile, through='PendingGroup',related_name='%(class)s_requests_created')
+
+
+class PendingGroup(models.Model):
+    person = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    group = models.ForeignKey(Group, on_delete=models.CASCADE)
