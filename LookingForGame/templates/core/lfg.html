@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8">
     {% load static %}
-    {% include "core/links.html" %}
+    {% include "component/links.html" %}
     <title>Looking For Game</title>
   </head>
   <body>
-    {% include "core/navbar.html" %}
+    {% include "component/navbar.html" %}
     <br>
     <div class="lfg_title" >
       <h3>Looking For Game</h3>
@@ -17,15 +17,15 @@
         Search for available groups here!
     </div>
 
-    {% include "core/group_preference_bar.html" %}
+    {% include "component/group_preference_bar.html" %}
 
     <!-- List Groups on LFG main page -->
-    {% include "core/group_list.html" %}
+    {% include "component/group_list.html" %}
 
     <div class="todo">
-      <p>TODO: Link games to creator (GameMaster), sort games by user provided paramaters, add "request to join" button</p>
+      <p>TODO: sort games by user provided paramaters, add "request to join" button</p>
     </div>
-    {% include "core/js_dependencies.html" %}
+    {% include "component/js_dependencies.html" %}
 
   </body>
 </html>

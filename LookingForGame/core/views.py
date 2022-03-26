@@ -9,9 +9,8 @@ from . import forms
 from user.models import UserProfile
 from django.contrib.auth.models import User
 
-
+@login_required(login_url='/login/')
 def home(request):
-
     if(request.method == "GET" and "delete" in request.GET):
         id = request.GET["delete"]
         Group.objects.filter(id=id).delete()
@@ -25,7 +24,12 @@ def home(request):
 def about_us(request):
     return render(request, "core/about.html")
 
+@login_required(login_url='/login/')
 def lfg(request):
+    if(request.method == "POST"):
+        print("joining!")
+        return render(request, "component/request_group.html");
+
     groups = Group.objects.all().values()
     context = {'page_data' : groups}
     return render(request, "core/lfg.html", context)
@@ -45,11 +49,11 @@ def join(request):
         else:
             # Form invalid, print errors to console
             page_data = { "join_form": join_form }
-            return render(request, 'core/join.html', page_data)
+            return render(request, 'component/join.html', page_data)
     else:
         join_form = JoinForm()
         page_data = { "join_form": join_form }
-        return render(request, 'core/join.html', page_data)
+        return render(request, 'component/join.html', page_data)
 
 def user_login(request):
     if (request.method == 'POST'):
@@ -74,10 +78,10 @@ def user_login(request):
             else:
                 print("Someone tried to login and failed.")
                 print("They used username: {} and password: {}".format(username,password))
-                return render(request, 'core/login.html', {"login_form": LoginForm})
+                return render(request, 'component/login.html', {"login_form": LoginForm})
     else:
         #Nothing has been provided for username or password.
-        return render(request, 'core/login.html', {"login_form": LoginForm})
+        return render(request, 'component/login.html', {"login_form": LoginForm})
 
 @login_required(login_url='/login/')
 def user_logout(request):
@@ -101,8 +105,8 @@ def create_group(request):
         else:
             # Form invalid, print errors to console
             page_data = { "group_form": group_form }
-            return render(request, 'core/create_group.html', page_data)
+            return render(request, 'component/create_group.html', page_data)
     else:
         group_form = forms.CreateGroupForm()
         page_data = { "group_form": group_form }
-        return render(request, 'core/create_group.html', page_data)
+        return render(request, 'component/create_group.html', page_data)

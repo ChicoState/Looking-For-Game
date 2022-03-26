@@ -14,19 +14,19 @@
     </script>
     <meta charset="utf-8">
     {% load static %}
-    {% include "core/links.html" %}
+    {% include "component/links.html" %}
     <title>Looking For Game</title>
   </head>
   <body>
-    {% include "core/navbar.html" %}
+    {% include "component/navbar.html" %}
     <br>
     <div class="group_list">
       <h4>My Groups</h4>
-      {% include "core/my_group_list.html" %}
+      {% include "component/my_group_list.html" %}
       <br>
     </div>
     <h4>Pending Invites</h4>
-    <!-- {% include "core/pending_invites.html" %} -->
+    <!-- {% include "component/pending_invites.html" %} -->
     Contributors:
     <ul>
       <li>1. Jonathan Phan</li>
@@ -40,12 +40,6 @@
     <div class="todo">
       <p>TODO: Show user pending group invites, requests to join your games, and games the user created, and friend list</p>
     </div>
-
-
-
-
-
-
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -66,7 +60,7 @@
       </div>
     </div>
     <!--Modal ends here--->
-    {% include "core/js_dependencies.html" %}
+    {% include "component/js_dependencies.html" %}
 
   </body>
 </html>
