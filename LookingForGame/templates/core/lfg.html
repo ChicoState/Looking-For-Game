@@ -3,166 +3,29 @@
   <head>
     <meta charset="utf-8">
     {% load static %}
-    {% include "core/links.html" %}
+    {% include "component/links.html" %}
     <title>Looking For Game</title>
-    <!-- <style>
-      .lfg_title {
-        display: flex;
-// centering along main axis - X axis - Horizontal
-        justify-content: center;
-// centering along cross axis - Y axis - Vertical
-        align-items: center;
-      }
-    </style> -->
   </head>
   <body>
-    {% include "core/navbar.html" %}
+    {% include "component/navbar.html" %}
     <br>
     <div class="lfg_title" >
       <h3>Looking For Game</h3>
-
-
     </div>
     <br>
     <div class="">
         Search for available groups here!
     </div>
 
-
-
-    <!-- Preferences bar on LFG main page -->
-    <div class="btn-group">
-      <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-        Game Type
-      </button>
-      <br>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Action</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-      </ul>
-
-      <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-        Campaign
-      </button>
-      <br>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Action</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-      </ul>
-
-      <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-        Max Players
-      </button>
-      <br>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">2-3</a></li>
-        <li><a class="dropdown-item" href="#">4-5</a></li>
-        <li><a class="dropdown-item" href="#">5-6</a></li>
-        <li><a class="dropdown-item" href="#">7+</a></li>
-      </ul>
-
-      <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-        Experience Level
-      </button>
-      <br>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Novice (0-1)</a></li>
-        <li><a class="dropdown-item" href="#">Moderate (2-3)</a></li>
-        <li><a class="dropdown-item" href="#">Advanced (4-5)</a></li>
-      </ul>
-
-      <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-        Meeting Frequency
-      </button>
-      <br>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Weekly</a></li>
-        <li><a class="dropdown-item" href="#">Twice Monthly</a></li>
-        <li><a class="dropdown-item" href="#">Monthly</a></li>
-        <li><a class="dropdown-item" href="#">Other</a></li>
-      </ul>
-    </div>
-    <!-- END Preferences bar on LFG main page -->
-
-
-
-
+    {% include "component/group_preference_bar.html" %}
 
     <!-- List Groups on LFG main page -->
-
-    {% if not page_data %}
-      <p>No groups to search</p>
-    {% else %}
-    {% for group in page_data %}
-    <div class="group_list" style="border-style: groove;">
-
-      <img src="" alt="">
-      <div class="form-group row">
-        <label for="group_name" class="col-sm-2 col-form-label">Group Name</label>
-        <div class="col-sm-10">
-          <input type="text" readonly class="form-control-plaintext" id="group_name" value="{{ group.group_name }}">
-        </div>
-      </div>
-
-        <div class="form-group row">
-          <label for="gm" class="col-sm-2 col-form-label">Game Master</label>
-          <div class="col-sm-10">
-            <input type="text" readonly class="form-control-plaintext" id="gm" value="Todo Even-Tully">
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <label for="campaign" class="col-sm-2 col-form-label">Campaign</label>
-          <div class="col-sm-10">
-            <input type="text" readonly class="form-control-plaintext" id="campaign" value="{{ group.campaign }}">
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <label for="group_size" class="col-sm-2 col-form-label">Group Size</label>
-          <div class="col-sm-10">
-            <input type="text" readonly class="form-control-plaintext" id="group_size" value="{{ group.group_size }}">
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <label for="age_min" class="col-sm-2 col-form-label">Minimum Age</label>
-          <div class="col-sm-10">
-            <input type="text" readonly class="form-control-plaintext" id="age_min" value="{{ group.age_minimum }}">
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <label for="exp_level" class="col-sm-2 col-form-label">Experience Level</label>
-          <div class="col-sm-10">
-            <input type="text" readonly class="form-control-plaintext" id="exp_level" value="{{ group.experience_level }}">
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <label for="meeting_freq" class="col-sm-2 col-form-label">Meeting Frequencies</label>
-          <div class="col-sm-10">
-            <input type="text" readonly class="form-control-plaintext" id="meeting_freq" value="{{ group.meeting_frequencies }}">
-          </div>
-        </div>
-
-        <div class="form-group row">
-          <label for="description" class="col-sm-2 col-form-label">Description</label>
-          <div class="col-sm-10">
-            <input type="text" readonly class="form-control-plaintext" id="description" value="{{ group.group_description }}">
-          </div>
-        </div>
-
-
-    </div>
-    {% endfor %}
-    {% endif %}
-    <!-- END List Groups on LFG main page -->
+    {% include "component/group_list.html" %}
 
     <div class="todo">
-      <p>TODO: Link games to creator (GameMaster), sort games by user provided paramaters, add "request to join" button</p>
+      <p>TODO: sort games by user provided paramaters, add "request to join" button</p>
     </div>
+    {% include "component/js_dependencies.html" %}
+
   </body>
 </html>

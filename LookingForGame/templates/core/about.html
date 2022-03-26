@@ -2,9 +2,9 @@
 <html>
     <head>
       {% load static %}
-      {% include "core/links.html" %}
+      {% include "component/links.html" %}
     </head>
-    {% include "core/navbar.html" %}
+    {% include "component/navbar.html" %}
     <body>
         <h1>About Us</h1>
         <hr>
@@ -13,5 +13,8 @@
             and believe in tools that make this as accessible to as many
             users as possible.
         </p>
+          {% include "component/js_dependencies.html" %}
     </body>
+
+
 </html>

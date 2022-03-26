@@ -2,13 +2,11 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    {% load static %}
-    {% include "core/links.html" %}
+    {% include "component/links.html" %}
     <title></title>
   </head>
   <body>
-    {% include "core/navbar.html" %}
-
+    {% include "component/navbar.html" %}
     <div class="User Preferences">
       <h2>Preferences</h2>
       <div>
@@ -58,13 +56,7 @@
               <input type="text" readonly class="form-control-plaintext" id="PLACEHOLDER4" value="PLACEHOLDER">
             </div>
           </div>
-
         </form>
-            <!-- <li>{{ user }}'s preferences</li>
-            <li>Username: {{ username }}</li>
-            <li>Email: {{ email }}</li>
-            <li></li> -->
-
         {% endif %}
       </div>
       <a href="/preferences/">Change Preferences</a>
@@ -73,9 +65,6 @@
     <div class="todo">
       <p>TODO: Finalize user preference options and update the model</p>
     </div>
+    {% include "component/js_dependencies.html" %}
   </body>
-  <script type="text/javascript">
-    mylist = `{{ page_data|safe }}`
-    console.log(mylist)
-  </script>
 </html>

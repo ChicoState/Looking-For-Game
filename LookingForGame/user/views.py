@@ -7,9 +7,10 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def user(request):
-    a = UserProfile.objects.get(id=request.user).__dict__
-    print(a)
-    print("Printed a \n")
+    print(request.user)
+    a = UserProfile.objects.all().__dict__
+    #print(a)
+    #print("Printed a \n")
     page_data = a #{'a': '1', 'b' : '2', 'c': '3'}#
     return render(request, "user/preferences.html", page_data)
 
@@ -19,7 +20,7 @@ def preferences(request):
         user_form = UserPreferences(request.POST)
 
         if user_form.is_valid():
-            
+
             if request.user.is_authenticated:
                 a = UserProfile.objects.get(id=request.user)
                 user = UserPreferences(request.POST, instance=a)
