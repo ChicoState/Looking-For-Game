@@ -3,29 +3,26 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    {% load static %}
     {% include "core/links.html" %}
     <title></title>
   </head>
   <body>
-      {% include "core/navbar.html" %}
-
+    {% include "core/navbar.html" %}
     <div class="container">
       <div class = "jumbotron">
         <h1>User Preferences</h1>
         <form method="POST">{% csrf_token %}
           <table>
             {{ user_form.as_table }}
-            <tr><td>
-              <input type="submit" class="btn-sm btn-primary" value = "Save Preferences"/>
-            </td></tr>
+            <tr>
+              <td>
+                <input type="submit" class="btn-sm btn-primary" value = "Save Preferences"/>
+              </td>
+            </tr>
           </table>
         </form>
-
       </div>
     </div>
-    </form>
-  
-    </div>
+    {% include "core/js_dependencies.html" %}
   </body>
 </html>

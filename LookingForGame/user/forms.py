@@ -7,7 +7,7 @@ from . import models
 class UserPreferences(forms.ModelForm):
     class Meta():
         model = UserProfile
-        fields = ('user', 'username', 'email')
+        fields = ('user', 'email')
         #user = forms.CharField(label='Your Name')
         #username = forms.CharField(label='Your Username', max_length=30)
         #email = forms.EmailField(label='email')

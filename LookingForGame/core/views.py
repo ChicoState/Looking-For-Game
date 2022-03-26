@@ -6,18 +6,27 @@ from django.template.defaulttags import register
 from core.models import Group
 from . import models
 from . import forms
+from user.models import UserProfile
+from django.contrib.auth.models import User
+
 
 def home(request):
 
-    return render(request, "core/home.html")
+    if(request.method == "GET" and "delete" in request.GET):
+        id = request.GET["delete"]
+        Group.objects.filter(id=id).delete()
+        return redirect("/")
+    #print(request.user)
+    groups = Group.objects.filter(game_master=request.user).values()
+    #print(groups)
+    context = {'page_data' : groups}
+    return render(request, "core/home.html", context)
 
 def about_us(request):
     return render(request, "core/about.html")
 
 def lfg(request):
     groups = Group.objects.all().values()
-    print(groups)
-    page_data = {'test': 'succeeded', 'test2': 'succeeded'}
     context = {'page_data' : groups}
     return render(request, "core/lfg.html", context)
 
@@ -82,9 +91,12 @@ def create_group(request):
     if (request.method == "POST"):
         group_form = forms.CreateGroupForm(request.POST)
         if (group_form.is_valid()):
+
             # Save form data to DB
-            user = group_form.save()
-            user.save()
+            user_form = group_form.save(commit=False)
+            user = request.user
+            user_form.game_master = user.username
+            user_form.save()
             return redirect("/")
         else:
             # Form invalid, print errors to console
