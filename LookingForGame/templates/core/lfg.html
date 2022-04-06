@@ -3,17 +3,18 @@
   <head>
     <meta charset="utf-8">
     {% load static %}
+    <link rel="stylesheet" href="{% static 'lstyles.css'%}">
     {% include "component/links.html" %}
     <title>Looking For Game</title>
   </head>
-  <body>
+  <body class="lfgBody">
     {% include "component/navbar.html" %}
     <br>
-    <div class="lfg_title" >
+    <div class="lText" >
       <h3>Looking For Game</h3>
     </div>
     <br>
-    <div class="">
+    <div class="lText">
         Search for available groups here!
     </div>
 
@@ -22,7 +23,7 @@
     <!-- List Groups on LFG main page -->
     {% include "component/group_list.html" %}
 
-    <div class="todo">
+    <div class="lText">
       <p>TODO: sort games by user provided paramaters, add "request to join" button</p>
     </div>
     {% include "component/js_dependencies.html" %}
