@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'istyles.css'%}">
+    {% include "component/links.html" %}
+    <title>Looking For Game</title>
+  </head>
+  <body class="indexBody">
+    {% include "component/navbar.html" %}
+    <br>
+
+    <h3 class="lfgTitle">LFG</h3>
+    <h3 class="lfgText">I am a...</h3>
+    <div class="buttons">
+	    <button class="player" onclick="location.href='/lfg'">Player</button>
+	    <button class="host" onclick="location.href='/create_group'">Host</button>
+    </div>
+   </body>
