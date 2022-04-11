@@ -110,3 +110,9 @@ def create_group(request):
         group_form = forms.CreateGroupForm()
         page_data = { "group_form": group_form }
         return render(request, 'component/create_group.html', page_data)
+
+# room_name is the group ID
+def group_page(request, pk):
+    return render(request, 'core/group_page.html', {
+        'room_name': pk
+    })

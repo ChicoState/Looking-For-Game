@@ -19,3 +19,15 @@ class Group(models.Model):
 class PendingGroup(models.Model):
     person = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     group = models.ForeignKey(Group, on_delete=models.CASCADE)
+
+class MessageModel(models.Model):
+    sender = models.TextField()
+    message_text = models.TextField()
+    time = models.TextField(null=True)
+    group = models.ForeignKey(Group, null=True, on_delete=models.SET_NULL)
+
+    def __str__(self):
+        return self.sender
+
+    def recent_messages(self):
+        return MessageModel.objects.order_by('time').all()[:50]

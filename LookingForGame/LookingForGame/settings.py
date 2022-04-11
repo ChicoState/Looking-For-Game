@@ -24,7 +24,8 @@ STATIC_DIR = os.path.join(BASE_DIR, "static")
 # SECURITY WARNING: keep the secret key used in production secret!
 
 load_dotenv(find_dotenv())
-SECRET_KEY = os.environ['SECRET_KEY']
+#SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = "lsque&7z+2bs)i&m&04!gao^ie!5q!9lun_bjgvq8qc#ig$v&"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
