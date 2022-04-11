@@ -19,7 +19,8 @@ from core import views as core_views
 from user import views as user_views
 
 urlpatterns = [
-    path('', core_views.home),
+    path('', core_views.index),
+    path('profile/', core_views.profile),
     path('about/', core_views.about_us),
     path('lfg/', core_views.lfg),
     path('admin/', admin.site.urls),

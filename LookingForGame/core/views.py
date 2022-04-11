@@ -9,17 +9,20 @@ from . import forms
 from user.models import UserProfile
 from django.contrib.auth.models import User
 
+def index(request):
+    return render(request, "core/index.html")
+
 @login_required(login_url='/login/')
-def home(request):
+def profile(request):
     if(request.method == "GET" and "delete" in request.GET):
         id = request.GET["delete"]
         Group.objects.filter(id=id).delete()
-        return redirect("/")
+        return redirect("core/profile.html")
     #print(request.user)
     groups = Group.objects.filter(game_master=request.user).values()
     #print(groups)
     context = {'page_data' : groups}
-    return render(request, "core/home.html", context)
+    return render(request, "core/profile.html", context)
 
 def about_us(request):
     return render(request, "core/about.html")
