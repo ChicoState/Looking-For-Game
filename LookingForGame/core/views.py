@@ -103,6 +103,8 @@ def create_group(request):
             user_form = group_form.save(commit=False)
             user = request.user
             user_form.game_master = user.username
+            group_list = models.Group.objects.all()
+            user_form.group_number = len(group_list) + 1
             user_form.save()
             return redirect("/")
         else:
