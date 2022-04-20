@@ -10,22 +10,13 @@
   <body class="lfgBody">
     {% include "component/navbar.html" %}
     <br>
-    <div class="lText" >
-      <h3>Looking For Game</h3>
-    </div>
+    <h3 class="lfgText" style="color: white; text-align: center; font-weight: 600; font-size: 300%;">Looking For Game</h3>
     <br>
-    <div class="lText">
-        Search for available groups here!
-    </div>
 
     {% include "component/group_preference_bar.html" %}
 
     <!-- List Groups on LFG main page -->
     {% include "component/group_list.html" %}
-
-    <div class="lText">
-      <p>TODO: sort games by user provided paramaters, add "request to join" button</p>
-    </div>
     {% include "component/js_dependencies.html" %}
 
   </body>
