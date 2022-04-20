@@ -1,0 +1,17 @@
+#adapted from example in docker documentation
+version: '3'
+
+services:
+  web:
+    build: .
+    volumes:
+       - .:/code
+    ports:
+       - 8000:8000
+     #user: "1002:1003"
+    command: python /code/LookingForGame/manage.py runserver 0.0.0.0:8000
+
+  redis:
+    image: redis
+    ports:
+      - 6379:6379

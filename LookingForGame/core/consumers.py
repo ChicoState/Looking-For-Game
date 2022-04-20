@@ -26,6 +26,7 @@ class ChatConsumer(WebsocketConsumer):
         # == LEGACY REFERENCE == artist_obj = models.Artist.objects.get(artist_id=int(self.room_name))
         #   messages_list = artist_obj.messagemodel_set.all()
         group_obj = models.Group.objects.get(group_number=int(self.room_name))
+        print("Room name = " + self.room_name)
         messages_list = group_obj.messagemodel_set.all()
         messages = sorted(messages_list, key=lambda x: x.time)
         #messages = models.MessageModel().recent_messages()
