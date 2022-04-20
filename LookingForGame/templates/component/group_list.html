@@ -3,70 +3,68 @@
   <p>No groups to search</p>
 {% else %}
 {% for group in page_data %}
-<div class="group_list" style="border-style: groove;">
+<div class="form-group row" style="margin-top: 25px;">
+  <label for="group_name" class="col-sm-2 col-form-label" style="color:white; padding-left: 25px; font-size: 170%;
+		                                                 font-weight: 600;">{{ group.group_name }}</label>
+</div>
 
+<div class="group_list" style="border-style: groove; border-color: rgba(200, 200, 200); border-radius: 8px; background-color: rgba(35, 35, 35);
+	                       padding-top: 10px;>
   <img src="" alt="">
-  <div class="form-group row">
-    <label for="group_name" class="col-sm-2 col-form-label" style="color:white;">Group Name</label>
-    <div class="col-sm-10">
-      <input type="text" readonly class="form-control-plaintext" id="group_name" value="{{ group.group_name }}" style="color:white;">
-    </div>
-  </div>
-
     <div class="form-group row">
-      <label for="gm" class="col-sm-2 col-form-label" style="color:white;">Game Master</label>
+      <label for="gm" class="col-sm-2 col-form-label" style="color:white; padding-left: 25px;">GM</label>
       <div class="col-sm-10">
         <input type="text" readonly class="form-control-plaintext" id="gm" value="{{ group.game_master }}" style="color:white;">
       </div>
     </div>
 
     <div class="form-group row">
-      <label for="campaign" class="col-sm-2 col-form-label" style="color:white;">Campaign</label>
+      <label for="campaign" class="col-sm-2 col-form-label" style="color:white; padding-left: 25px;">Campaign</label>
       <div class="col-sm-10">
         <input type="text" readonly class="form-control-plaintext" id="campaign" value="{{ group.campaign }}" style="color:white;">
       </div>
     </div>
 
     <div class="form-group row">
-      <label for="group_size" class="col-sm-2 col-form-label" style="color:white;">Group Size</label>
+      <label for="group_size" class="col-sm-2 col-form-label" style="color:white; padding-left: 25px;">Group Size</label>
       <div class="col-sm-10">
         <input type="text" readonly class="form-control-plaintext" id="group_size" value="{{ group.group_size }}" style="color:white;">
       </div>
     </div>
 
     <div class="form-group row">
-      <label for="age_min" class="col-sm-2 col-form-label" style="color:white;">Minimum Age</label>
+      <label for="age_min" class="col-sm-2 col-form-label" style="color:white; padding-left: 25px;">Minimum Age</label>
       <div class="col-sm-10">
         <input type="text" readonly class="form-control-plaintext" id="age_min" value="{{ group.age_minimum }}" style="color:white;">
       </div>
     </div>
 
     <div class="form-group row">
-      <label for="exp_level" class="col-sm-2 col-form-label" style="color:white;">Experience Level</label>
+      <label for="exp_level" class="col-sm-2 col-form-label" style="color:white; padding-left: 25px;">Experience Level</label>
       <div class="col-sm-10">
         <input type="text" readonly class="form-control-plaintext" id="exp_level" value="{{ group.experience_level }}" style="color:white;">
       </div>
     </div>
 
     <div class="form-group row">
-      <label for="meeting_freq" class="col-sm-2 col-form-label" style="color:white;">Meeting Frequencies</label>
+      <label for="meeting_freq" class="col-sm-2 col-form-label" style="color:white; padding-left: 25px;">Meeting Frequencies</label>
       <div class="col-sm-10">
         <input type="text" readonly class="form-control-plaintext" id="meeting_freq" value="{{ group.meeting_frequencies }}" style="color:white;">
       </div>
     </div>
 
     <div class="form-group row">
-      <label for="description" class="col-sm-2 col-form-label" style="color:white;">Description</label>
+      <label for="description" class="col-sm-2 col-form-label" style="color:white; padding-left: 25px;">Description</label>
       <div class="col-sm-10">
         <input type="text" readonly class="form-control-plaintext" id="description" value="{{ group.group_description }}" style="color:white;">
       </div>
     </div>
 
-    <div class="container" style="padding-bottom: 5px;">
+    <div class="container" style="padding-bottom: 18px; padding-top: 13px; margin-left: 0px;">
       <form class="" action="/lfg/" method="POST">{% csrf_token %}
-        <button type="submit" class="btn btn-secondary btn-sm">
-          Request to join
-        </button>
+        <button type="submit" class="btn btn-secondary btn-sm" style="background-color: rgba(25, 135, 84); text-color: white; font-weight: 400;
+		                                                      border-weight: 2px; border-color: black; border-radius: 5px;
+								      font-size: 103%;">Request to join</button>
       </form>
 
     </div>
