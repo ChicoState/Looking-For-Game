@@ -2,16 +2,28 @@
 <html>
     <head>
       {% load static %}
+      <link rel="stylesheet" href="{% static 'astyles.css'%}">
       {% include "component/links.html" %}
     </head>
     {% include "component/navbar.html" %}
-    <body>
+    <body class ="aboutBody">
         <h1>About Us</h1>
         <hr>
-        <p>
+        <p class="aboutText">
             We are a group of developers that value social interaction
             and believe in tools that make this as accessible to as many
             users as possible.
+
+	    Contributors:
+
+	    <ul>
+		    <li>1. Jonathan Phan</li>
+		    <li>2. Joshua Pineda</li>
+		    <li>3. Juan Palos Nava</li>
+		    <li>4. Reed Lagomarsino</li>
+		    <li>5. Spencer Leff</li>
+		    <li>6. Tai Masuda</li>
+	    </ul>
         </p>
           {% include "component/js_dependencies.html" %}
     </body>
