@@ -24,12 +24,13 @@ STATIC_DIR = os.path.join(BASE_DIR, "static")
 # SECURITY WARNING: keep the secret key used in production secret!
 
 load_dotenv(find_dotenv())
-SECRET_KEY = os.environ['SECRET_KEY']
+#SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = "lsque&7z+2bs)i&m&04!gao^ie!5q!9lun_bjgvq8qc#ig$v&"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0']
 
 
 # Application definition
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+    'channels',
     'user'
 ]
 
@@ -74,6 +76,16 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'LookingForGame.wsgi.application'
+ASGI_APPLICATION = 'LookingForGame.asgi.application'
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('redis', 6379)],
+        },
+    },
+}
 
 
 # Database
