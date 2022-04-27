@@ -2,48 +2,9 @@
  background-color: rgb(30, 30, 30);
 }
 
-.lfgTitle {
- padding-top: 50px;
- color: rgb(235, 235, 235);
- text-align: center;
- font-weight: 600;
- letter-spacing: 5px;
- font-size: 900%;
-}
-
-.lfgText {
- text-align: center;
- padding-bottom: 30px;
- font-size: 200%;
- color: rgb(210, 210, 210);
-}
-
-.buttons {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.player {
-	background-color: rgb(225, 225, 225);
-	font-size: 25px;
-	margin-right: 20px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	padding-left: 10px;
-	padding-right: 10px;
-	border-radius: 5px;
-	font-weight: 500;
-}
-
-.host {
-	background-color: rgb(225, 225, 225);
-	font-size: 25px;
-	margin-left: 20px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	padding-left: 12px;
-	padding-right: 12px;
-	border-radius: 5px;
-	font-weight: 500;
+#particles-js canvas{
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
 }

@@ -15,21 +15,32 @@
     <meta charset="utf-8">
     {% load static %}
     {% include "component/links.html" %}
+    {% include "component/navbar.html" %}
     <title>Looking For Game</title>
   </head>
-  <body>
-    {% include "component/navbar.html" %}
-    <br>
-    <div class="group_list">
-      <h4>My Groups</h4>
-      {% include "component/my_group_list.html" %}
-      <br>
-    </div>
-    <h4>Pending Invites</h4>
-    <!-- {% include "component/pending_invites.html" %} -->
+  <body style="background-color: rgba(30, 30, 30);">
 
-    <div class="todo">
-      <p>TODO: Show user pending group invites, requests to join your games, and games the user created, and friend list</p>
+    <h3 style="color: white; font-size: 300%; font-weight: 600; text-align: center; margin-top: 30px; margin-bottom: 15px;">Profile</h3>
+    <div style="display: flex; align-items: center; justify-content: center;">
+    <div style="border-style: groove; border-color: rgba(200, 200, 200); border-radius: 2px; display: flex; width: 35%;
+	        flex-direction: column; justify-content: center; align-items: center; padding-top: 15px; margin-bottom: 45px;">
+	    <div style="display: flex; flex-direction: row; justify-content: center; align-items: center;">
+	    <p style="color: white; font-size: 150%; font-weight: 400;">Username: </p>
+      	    {% if user.is_authenticated %}
+	    <p style="color: white; font-size: 160%; font-weight: 600; padding-left: 30px;">{{ user.username }}</p>
+      	    {% else %}
+	    <p style="color: white; font-size: 160%; font-weight: 600; padding-left: 30px;">Guest</p>
+            {% endif %}
+	    </div>
+
+	    <p style="margin-bottom: 15px;"><a href="{% url 'password_reset' %}">Reset Password</a></p>
+    </div>
+    </div>
+
+
+    <h3 style="color: white; font-size: 250%; font-weight: 600; text-align: center; margin-top: 10px; margin-bottom: 15px;">My Groups</h3>
+    <div class="group_list"> 
+      {% include "component/my_group_list.html" %}
     </div>
 
     <!-- Modal -->

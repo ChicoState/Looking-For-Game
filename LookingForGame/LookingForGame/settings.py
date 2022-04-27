@@ -30,8 +30,11 @@ SECRET_KEY = "lsque&7z+2bs)i&m&04!gao^ie!5q!9lun_bjgvq8qc#ig$v&"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0']
+ALLOWED_HOSTS = ['0.0.0.0', '*']
 
+# FOR PASSWORD RESETTING
+EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_FILE_PATH = "../sent_emails"
 
 # Application definition
 
