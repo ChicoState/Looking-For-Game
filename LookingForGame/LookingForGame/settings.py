@@ -34,7 +34,7 @@ ALLOWED_HOSTS = ['0.0.0.0', '*']
 
 # FOR PASSWORD RESETTING
 EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
-EMAIL_FILE_PATH = "../../sent_emails"
+EMAIL_FILE_PATH = "../sent_emails"
 
 # Application definition
 

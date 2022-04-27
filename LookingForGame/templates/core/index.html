@@ -5,16 +5,42 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'istyles.css'%}">
     {% include "component/links.html" %}
+    {% include "component/navbar.html" %}
     <title>Looking For Game</title>
   </head>
   <body class="indexBody">
-    {% include "component/navbar.html" %}
-    <br>
 
-    <h3 class="lfgTitle">LFG</h3>
-    <h3 class="lfgText">I am a...</h3>
-    <div class="buttons">
-	    <button class="player" onclick="location.href='/lfg'">Player</button>
-	    <button class="host" onclick="location.href='/create_group'">Host</button>
+
+    <div class="indexClass" style="display: flex; align-items: center; justify-content: center;">
+	    <h3 style="color: white; font-size:900%; position: absolute; text-align: center; margin-top: 400px;
+		       font-weight: 600; letter-spacing: 5px;">LFG</h3>
+	    <h3 style="color: white; font-size: 200%; position: absolute; text-align: center; margin-top: 600px;">I want to...</h3>
+
+	    <button onclick="location.href='/lfg'"
+            class="btn btn-secondary btn-sm"
+	    style="color: black; background-color: white;
+	    border-style: groove; border-color: black;
+	    border-radius: 3px; border-weight: 2px; margin-right: 110px;
+	    position: absolute; margin-top: 740px;
+	    font-size: 24px; font-weight: 500;">
+  	    Join
+	    </button>
+
+
+	    <button onclick="location.href='/create_group'"
+            class="btn btn-secondary btn-sm"
+	    style="color: black; background-color: white;
+	    border-style: groove; border-color: black;
+	    border-radius: 3px; border-weight: 2px; margin-left: 110px;
+	    position: absolute; margin-top: 740px;
+	    font-size: 24px; font-weight: 500;">
+  	    Host
+	    </button>
+
     </div>
+    <div id="particles-js"></div>
+
    </body>
+
+   <script type="text/javascript" src="../../static/particles.js"></script>
+   <script type="text/javascript" src="../../static/app.js"></script>
