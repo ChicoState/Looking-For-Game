@@ -106,7 +106,7 @@ def create_group(request):
             group_list = models.Group.objects.all()
             user_form.group_number = len(group_list) + 1
             user_form.save()
-            return redirect("/")
+            return redirect("/lfg")
         else:
             # Form invalid, print errors to console
             page_data = { "group_form": group_form }

@@ -2,7 +2,7 @@
 <br>
   <p>No groups to search</p>
 {% else %}
-{% for group in page_data %}
+{% for group in page_data reversed %}
 
 <div class="col-sm-2 col-form-label" style="color: white; font-weight: 600; font-size: 175%; padding-top: 30px; white-space: nowrap;
 	    margin-top: 5px;">{{ group.group_name }}</div>
