@@ -32,8 +32,41 @@ def lfg(request):
     if(request.method == "POST"):
         print("joining!")
         return render(request, "component/request_group.html");
-
     groups = Group.objects.all().values()
+    context = {'page_data' : groups}
+    return render(request, "core/lfg.html", context)
+
+@login_required(login_url='/login/')
+def sort_age(request, age):
+    if(request.method == "POST"):
+        return render(request, "component/request_group.html");
+    if(age != "any"):
+        groups = Group.objects.filter(age_minimum=age).values()
+    else:
+        groups = Group.objects.all().values()
+
+    context = {'page_data' : groups}
+    return render(request, "core/lfg.html", context)
+
+@login_required(login_url='/login/')
+def sort_exp(request, exp):
+    if(request.method == "POST"):
+        return render(request, "component/request_group.html");
+    if(exp != "any"):
+        groups = Group.objects.filter(experience_level=exp).values()
+    else:
+        groups = Group.objects.all().values()
+    context = {'page_data' : groups}
+    return render(request, "core/lfg.html", context)
+
+@login_required(login_url='/login/')
+def sort_players(request, players):
+    if(request.method == "POST"):
+        return render(request, "component/request_group.html");
+    if(players != "any"):
+        groups = Group.objects.filter(group_size=players).values()
+    else:
+        groups = Group.objects.all().values()
     context = {'page_data' : groups}
     return render(request, "core/lfg.html", context)
 
