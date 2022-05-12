@@ -11,7 +11,7 @@
 
   <img src="" alt="">
     <div class="form-group row">
-      <label for="gm" class="col-sm-2 col-form-label" style="color:white; padding-left: 25px;">GM</label>
+      <label for="gm" class="col-sm-2 col-form-label" style="color:white; padding-left: 25px;">Game Master</label>
       <div class="col-sm-10">
         <input type="text" readonly class="form-control-plaintext" id="gm" value="{{ group.game_master }}" style="color:white; font-weight: 600;">
       </div>
@@ -60,7 +60,7 @@
     </div>
 
     <div class="container" style="padding-bottom: 20px; padding-top: 8px; margin-left: 0px;">
-      <form class="" action="/lfg/" method="POST">{% csrf_token %}
+      <form class="" action="/lfg/{{ group.id }}" method="POST">{% csrf_token %}
         <button type="submit" class="btn btn-secondary btn-sm" style="color: white; background-color: rgba(25, 135, 84); border-style: groove; border-color: black; border-radius: 2px; border-weight: 2px;">
           Request to join
         </button>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    {% load static %}
+    {% include "component/links.html" %}
+    {% include "component/navbar.html" %}
+    <title>Group View</title>
+  </head>
+  <body style="background-color: rgba(30, 30, 30);">
+
+    {% for item in page_data %}
+    <p style="color:white;">Game Master : {{item.game_master}}</p>
+    <p style="color:white;">Group Name : {{item.group_name}}</p>
+    <p style="color:white;">Campaign : {{item.campaign}}</p>
+    <p style="color:white;">Size : {{item.group_size}}</p>
+    <p style="color:white;">Age : {{item.age_minimum}}</p>
+    <p style="color:white;">Experience : {{item.experience_level}}</p>
+    <p style="color:white;">Meetings : {{item.meeting_frequencies}}</p>
+    <p style="color:white;">Description : {{item.group_description}}</p>
+    {% endfor %}
+
+    <a href="/profile">
+      <button class="btn btn-secondary" type="button" name="button">Back</button>
+    </a>
+
+  </body>
+</html>

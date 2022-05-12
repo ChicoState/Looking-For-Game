@@ -21,8 +21,11 @@ from user import views as user_views
 urlpatterns = [
     path('', core_views.index),
     path('profile/', core_views.profile),
+    path('profile/groupview/<int:id>', core_views.profile_groupview),
+    path('profile/delete/<int:id>', core_views.profile_del),
     path('about/', core_views.about_us),
     path('lfg/', core_views.lfg),
+    path('lfg/<int:id>', core_views.lfg_group),
     path('lfg/sort_a/<str:age>', core_views.sort_age),
     path('lfg/sort_p/<str:players>', core_views.sort_players),
     path('lfg/sort_e/<str:exp>', core_views.sort_exp),

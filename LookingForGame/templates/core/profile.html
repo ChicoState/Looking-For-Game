@@ -1,17 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <script type="text/javascript">
-    function confirmDeleteModal(id) {
-      $('#deleteModal').modal();
-      $('#deleteButton').html('<a href="?delete='+id+'" class="btn btn-danger" onclick="return closeDeleteModal('+id+')">Delete</a>');
-    }
-
-    function closeDeleteModal(id) {
-      $('#deleteModal').modal('hide');
-      return true
-    }
-    </script>
     <meta charset="utf-8">
     {% load static %}
     {% include "component/links.html" %}
@@ -39,29 +28,14 @@
 
 
     <h3 style="color: white; font-size: 250%; font-weight: 600; text-align: center; margin-top: 10px; margin-bottom: 15px;">My Groups</h3>
-    <div class="group_list"> 
+    <div class="group_list">
       {% include "component/my_group_list.html" %}
     </div>
+    <h3 style="color: white; font-size: 250%; font-weight: 600; text-align: center; margin-top: 10px; margin-bottom: 15px;">Pending Groups</h3>
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Delete Group</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <p>Do you really want to delete this group?</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <span id='deleteButton'></span>
-          </div>
-        </div>
-      </div>
+    <div class="my_pending_group_list">
+      {% include "component/my_pending_group_list.html" %}
     </div>
-    <!--Modal ends here--->
     {% include "component/js_dependencies.html" %}
 
   </body>
