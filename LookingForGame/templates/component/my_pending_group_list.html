@@ -1,8 +1,8 @@
-{% if not page_data %}
+{% if not pending_groups %}
 <br>
   <p>No groups to search</p>
 {% else %}
-{% for group in page_data reversed %}
+{% for group in pending_groups reversed %}
 
 <div style="display: flex; justify-content: center; align-items: center;">
 	<div style="border-style: groove; border-color: rgba(200, 200, 200); border-radius: 2px; width: 50%;
@@ -10,11 +10,13 @@
 
             <div class="col-sm-2 col-form-label" style="color: white; font-weight: 600; font-size: 185%; padding-bottom: 20px; text-align: center;
 	                                                margin-top: 5px; width: 100%;
-							">{{ group.group_name }}</div>
-
+							">Group number: {{ group.group.group_name }}</div>
+              <div class="col-sm-2 col-form-label" style="color: white; font-weight: 600; font-size: 185%; padding-bottom: 20px; text-align: center;
+  	                                                margin-top: 5px; width: 100%;
+  							">Leader: {{ group.group_leader }}</div>
 	    <div style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
             <!-- Button trigger modal -->
-            <a href="/profile/groupview/{{ group.id }}">
+              <a href="/profile/groupview/{{ group.group.id }}">
             <button type="button" class="btn btn-secondary btn-sm"
 			          style="color: white; background-color: rgba(60, 60, 220);
 			          border-style: groove; border-color: black;
@@ -22,19 +24,6 @@
         	Group View
       	    </button>
             </a>
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-secondary btn-sm"
-			          style="color: white; background-color: rgba(25, 135, 84);
-			          border-style: groove; border-color: black;
-				  border-radius: 2px; border-weight: 2px; margin-right: 30px;">
-        	Requests
-      	    </button>
-            <a href="/profile/delete/{{ group.id }}">
-              <button class="btn btn-secondary btn-sm"
-  	                       				          style="color: white; background-color: rgba(220, 20, 60);
-  									 border-style: groove; border-color: black;
-  									 border-radius: 2px; border-weight: 2px;">Delete</button>
-          </a>
 	    </div>
 
           </div>

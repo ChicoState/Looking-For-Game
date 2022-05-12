@@ -45,8 +45,13 @@ class Group(models.Model):
 
 
 class PendingGroup(models.Model):
-    person = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
-    group = models.ForeignKey(Group, on_delete=models.CASCADE)
+    pending_group_id = models.CharField(max_length=30)
+    group_leader = models.ForeignKey(User, on_delete=models.CASCADE, related_name="leader")
+    users = models.ManyToManyField(User)
+    #group = models.CharField(max_length=10)
+    group = models.ForeignKey(Group, on_delete=models.CASCADE, related_name="orig_group_number")
+    #person = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    #group = models.ForeignKey(Group, on_delete=models.CASCADE)
 
 class MessageModel(models.Model):
     sender = models.TextField()

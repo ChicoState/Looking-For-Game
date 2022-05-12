@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.template.defaulttags import register
-from core.models import Group
+from core.models import Group, PendingGroup
 from . import models
 from . import forms
 from user.models import UserProfile
@@ -15,13 +15,36 @@ def index(request):
 @login_required(login_url='/login/')
 def profile(request):
     if(request.method == "GET" and "delete" in request.GET):
-        id = request.GET["delete"]
+        #id = request.GET["delete"]
         Group.objects.filter(id=id).delete()
         return redirect("core/profile.html")
     #print(request.user)
     groups = Group.objects.filter(game_master=request.user).values()
+    pending_groups = PendingGroup.objects.filter(users=request.user)
+    print(pending_groups)
     #print(groups)
-    context = {'page_data' : groups}
+    context = {'page_data' : groups,
+               'pending_groups' : pending_groups}
+    return render(request, "core/profile.html", context)
+
+@login_required(login_url='/login/')
+def profile_groupview(request, id):
+    #print(request.user)
+    group = list(Group.objects.filter(id=id).values())
+
+
+    #print(groups)
+    context = {'page_data' : group}
+    return render(request, "component/groupview.html", context)
+
+@login_required(login_url='/login/')
+def profile_del(request, id):
+
+    Group.objects.filter(id=id).delete()
+    groups = Group.objects.filter(game_master=request.user).values()
+    pending_groups = PendingGroup.objects.filter(users=request.user)
+    context = {'page_data' : groups,
+               'pending_groups' : pending_groups}
     return render(request, "core/profile.html", context)
 
 def about_us(request):
@@ -29,9 +52,52 @@ def about_us(request):
 
 @login_required(login_url='/login/')
 def lfg(request):
+    #if(request.method == "POST"):
+        #return render(request, "component/request_group.html");
+    groups = Group.objects.all().values()
+    context = {'page_data' : groups}
+    return render(request, "core/lfg.html", context)
+
+@login_required(login_url='/login/')
+def lfg_group(request, id):
     if(request.method == "POST"):
-        print("joining!")
-        return render(request, "component/request_group.html");
+        #add to group here
+        print("REQUESTER ID:" + str(request.user.id))
+        print("Group id: " + str(id))
+        pendinggroup = list(Group.objects.filter(id=id).values())
+        gm = pendinggroup[0]['game_master']
+        print(pendinggroup)
+        cur_lead = User.objects.get(username=gm)
+        group = Group.objects.get(id=id)
+
+        pg_id = str(gm) + str(id)
+        print(pg_id)
+        pg = PendingGroup.objects.filter(pending_group_id=pg_id)
+        if(pg.exists()):
+            #add
+
+            pg = PendingGroup.objects.get(pending_group_id=pg_id)
+            print("it exists")
+            #print(pg.values()[0]['id'])
+
+
+            pg.users.add(User.objects.get(id=request.user.id))
+            pg.save()
+            #pgall = PendingGroup.objects.all()
+            #print(pgall)
+        else:
+            #create
+            print("doesn't exist")
+            groupid= Group.objects.get(id=id)
+            pg = PendingGroup.objects.create(pending_group_id=pg_id, group_leader=cur_lead, group=groupid)
+            pg.save()
+            pg.users.add(User.objects.get(id=request.user.id))
+            pg.save()
+            #print(pg.users)
+            #print(pg)
+
+        context = {'page_data' : pendinggroup}
+        return render(request, "component/request_group.html", context);
     groups = Group.objects.all().values()
     context = {'page_data' : groups}
     return render(request, "core/lfg.html", context)

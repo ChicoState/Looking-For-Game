@@ -11,18 +11,10 @@
     <div class="container">
       <div class = "jumbotron">
         <h1>Join Group</h1>
-        <form action="/lfg_request/" method="POST">{% csrf_token %}
-          <table>
-            {{ group_form.as_table }}
-            Request group form AS TABLE
-            enter your stats for specific game, if already saved preload info
-            <tr><td>
-              <input type="hidden" name="group" value="{{ group.group_id }}" />
-              <input type="hidden" name="person" value="{{ user.id }}" />
-              <input type="submit" class="btn btn-primary" value = "Send Request"/>
-            </td></tr>
-          </table>
-        </form>
+        <p>Your request has been sent!</p>
+        <a href="/lfg">
+          <button class="btn btn-primary">Return</button>
+      </a>
       </div>
     </div>
   </body>
