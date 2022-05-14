@@ -4,13 +4,16 @@
 <head>
     <meta charset="utf-8"/>
     <title>Chat Room</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'astyles.css'%}">
+    {% include "component/links.html" %}
 </head>
-<body>
-    <a href="http://{{request.get_host}}">home</a>
+{% include "component/navbar.html" %}
+<body style="background-color: rgba(30, 30, 30);">
+    <h1 style="color:white;">{{groupname}}</h1>
     <hr>
-    <textarea id="chat-log" cols="100" rows="20"></textarea><br>
-    Name: <input id="chat-message-name" type="text" size="20"><br>
-    <input id="chat-message-input" type="text" size="100"><br>
+    <textarea id="chat-log" cols="100" rows="15" style="color:white;background-color: rgba(40, 40, 40);" ></textarea><br><br>
+    <input id="chat-message-input" type="text" size="100" style="color:white;background-color: rgba(40, 40, 40);"><br>
     <input id="chat-message-submit" type="button" value="Send">
     {{ room_name|json_script:"room-name" }}
     <script>
@@ -41,12 +44,13 @@
         };
 
         document.querySelector('#chat-message-submit').onclick = function(e) {
-            const msgNameDom = document.querySelector('#chat-message-name');
+
             const messageInputDom = document.querySelector('#chat-message-input');
-            const message = msgNameDom.value + ': ' + messageInputDom.value;
+            const message = messageInputDom.value;
             chatSocket.send(JSON.stringify({
                 'message': messageInputDom.value,
-                'sender': msgNameDom.value,
+                //'sender': msgNameDom.value,
+                'sender': "{{username}}",
                 'option': roomName
             }));
             messageInputDom.value = '';

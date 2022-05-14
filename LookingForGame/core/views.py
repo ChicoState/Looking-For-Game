@@ -213,6 +213,9 @@ def create_group(request):
 
 # room_name is the group ID
 def group_page(request, pk):
+    group_obj = models.Group.objects.get(group_number=pk)
     return render(request, 'core/group_page.html', {
+        'username' : request.user,
+        'groupname' : group_obj.group_name,
         'room_name': pk
     })
