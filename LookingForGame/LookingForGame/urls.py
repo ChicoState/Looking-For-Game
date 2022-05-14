@@ -37,6 +37,4 @@ urlpatterns = [
     path('user/', user_views.user),
     path('preferences/', user_views.preferences),
     path('profile/groupview/Group/<str:pk>/', core_views.group_page, name='room'),
-
-    path('accounts/', include('django.contrib.auth.urls')),
 ]
