@@ -22,4 +22,4 @@ class LoginForm(forms.Form):
 class CreateGroupForm(forms.ModelForm):
     class Meta():
         model = models.Group
-        fields = ('group_name', 'campaign', 'group_size', 'age_minimum', 'experience_level', 'meeting_frequencies', 'group_description')
+        fields = ('group_name', 'campaign', 'group_size', 'age_minimum', 'experience_level', 'meeting_frequencies', 'schedule', 'group_description',)

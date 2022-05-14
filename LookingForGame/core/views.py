@@ -29,11 +29,7 @@ def profile(request):
 
 @login_required(login_url='/login/')
 def profile_groupview(request, id):
-    #print(request.user)
     group = list(Group.objects.filter(id=id).values())
-
-
-    #print(groups)
     context = {'page_data' : group}
     return render(request, "component/groupview.html", context)
 
@@ -217,6 +213,9 @@ def create_group(request):
 
 # room_name is the group ID
 def group_page(request, pk):
+    group_obj = models.Group.objects.get(group_number=pk)
     return render(request, 'core/group_page.html', {
+        'username' : request.user,
+        'groupname' : group_obj.group_name,
         'room_name': pk
     })

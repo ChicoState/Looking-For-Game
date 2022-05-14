@@ -41,6 +41,7 @@ class Group(models.Model):
         experience_level = models.CharField(max_length = 20, choices = EXP_CHOICES, default = "Intermediate")
         meeting_frequencies = models.CharField(max_length = 20, choices = FREQ_CHOICES, default = "Weekly")
         group_description = models.CharField(max_length = 240)
+        schedule = models.CharField(max_length = 240)
         #members = models.ManyToManyField(UserProfile, through='PendingGroup',related_name='%(class)s_requests_created')
 
 
