@@ -18,8 +18,14 @@
     <p style="color:white;">Experience : {{item.experience_level}}</p>
     <p style="color:white;">Meetings : {{item.meeting_frequencies}}</p>
     <p style="color:white;">Description : {{item.group_description}}</p>
+    <a href="Group/{{item.group_number}}">
+      <button class="btn btn-secondary" type="button" name="button">CHAT</button>
+    </a>
     {% endfor %}
 
+    
+    <br>
+    <hr>
     <a href="/profile">
       <button class="btn btn-secondary" type="button" name="button">Back</button>
     </a>
