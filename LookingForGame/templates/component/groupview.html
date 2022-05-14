@@ -10,19 +10,18 @@
   <body style="background-color: rgba(30, 30, 30);">
 
     {% for item in page_data %}
-    <p style="color:white;">Game Master : {{item.game_master}}</p>
-    <p style="color:white;">Group Name : {{item.group_name}}</p>
-    <p style="color:white;">Campaign : {{item.campaign}}</p>
-    <p style="color:white;">Size : {{item.group_size}}</p>
-    <p style="color:white;">Age : {{item.age_minimum}}</p>
-    <p style="color:white;">Experience : {{item.experience_level}}</p>
-    <p style="color:white;">Meetings : {{item.meeting_frequencies}}</p>
-    <p style="color:white;">Description : {{item.group_description}}</p>
-    {% endfor %}
+    <h3 style="color: white; text-align: center; font-size: 285%; font-weight: 600; margin-top: 15px; margin-bottom: 15px;">{{ item.group_name }}</h3>
 
-    <a href="/profile">
-      <button class="btn btn-secondary" type="button" name="button">Back</button>
+    <div style="display: flex; align-items: center; justify-content: center; width: 100%; padding-bottom: 25px; border-bottom: 3px solid white;">
+    <a href="http://www.roll20.net/welcome">
+      <button style="margin-right: 10px; font-weight: 400; font-size: 125%; background-color: rgba(146, 33, 131); color: white;" class="btn btn-secondary" type="button" name="button">Roll20</button>
     </a>
+
+    <a href="http://discord.gg/9kQsTCdbvS">
+      <button style="margin-left: 10px; font-weight: 400; font-size: 125%; background-color: rgba(114, 137, 218); color: white;" class="btn btn-secondary" type="button" name="button">Discord</button>
+    </a>
+    </div>
+    {% endfor %}
 
   </body>
 </html>
