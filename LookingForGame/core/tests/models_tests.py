@@ -1,6 +1,7 @@
 from django.test import TestCase
 from user.models import UserProfile
 from django.contrib.auth.models import User
+from core.models import Group
 
 class TestModels(TestCase):
     def setUp(self):
@@ -23,7 +24,7 @@ class TestModels(TestCase):
                 age_minimum = "18+",
                 experience_level = "beginner",
                 meeting_frequencies = "Weekly",
-                group_decrption = "This is a test group",
+                group_description = "This is a test group",
                 schedule = "Meet on Fridays!"
                 )
         self.pgroup2 = PendingGroup.objects.create(
