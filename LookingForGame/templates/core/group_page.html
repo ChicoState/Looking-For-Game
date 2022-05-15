@@ -10,11 +10,14 @@
 </head>
 {% include "component/navbar.html" %}
 <body style="background-color: rgba(30, 30, 30);">
-    <h1 style="color:white;">{{groupname}}</h1>
+    <h3 style="text-align: center; color:white; margin-top: 15px; font-weight: 600; font-size: 280%;">{{groupname}}</h1>
     <hr>
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
     <textarea id="chat-log" cols="100" rows="15" style="color:white;background-color: rgba(40, 40, 40);" ></textarea><br><br>
-    <input id="chat-message-input" type="text" size="100" style="color:white;background-color: rgba(40, 40, 40);"><br>
-    <input id="chat-message-submit" type="button" value="Send">
+    <input id="chat-message-input" type="text" size="100" style="margin-top: 20px; color:white; background-color: rgba(40, 40, 40);"><br>
+    <input id="chat-message-submit" type="button" style="margin: 15px; margin-top: 20px; background-color: rgba(190, 180, 255); color: black; font-size: 125%; font-weight: 400;" class="btn btn-secondary" value="Send">
+
+    </div>
     {{ room_name|json_script:"room-name" }}
     <script>
         const roomName = JSON.parse(document.getElementById('room-name').textContent);
