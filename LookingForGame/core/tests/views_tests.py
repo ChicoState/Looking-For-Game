@@ -4,7 +4,7 @@ import json
 
 
 class TestViews(TestCase):
-    def login(self, data):
+    def Testlogin(self, data):
         self.username = 'testUser'
         self.password = '12345'
         user = User.objects.create(username=self.username)
@@ -14,3 +14,5 @@ class TestViews(TestCase):
         c = Clients()
         UserLogIn = c.login(username=self.username, password=self.password)
         self.assertTrue(UserLogIn)
+    def TestProfile():
+        force_login(user, backend=None)
