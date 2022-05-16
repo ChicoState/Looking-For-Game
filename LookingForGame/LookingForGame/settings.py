@@ -45,8 +45,6 @@ INSTALLED_APPS = [
     'core',
     'channels',
     'user',
-    'crispy_forms',
-    'crispy_bootstrap5',
     'django_nose',
     'crispy_forms',
     'crispy_bootstrap5',
