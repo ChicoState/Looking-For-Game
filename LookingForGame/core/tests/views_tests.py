@@ -56,7 +56,7 @@ class TestViews(TestCase):
                 game_master= 'Reed',
                 group_name='Looking-For-Game',
                 campaign='Avernus',
-                group_size=5,
+                group_size='5',
                 age_minimum="18+",
                 experience_level="Intermediate",
                 meeting_frequencies="Weekly",
@@ -80,7 +80,7 @@ class TestViews(TestCase):
                 game_master= 'Reed',
                 group_name='Looking-For-Game',
                 campaign='Avernus',
-                group_size=5,
+                group_size='5',
                 age_minimum="18+",
                 experience_level="Intermediate",
                 meeting_frequencies="Weekly",
@@ -98,7 +98,7 @@ class TestViews(TestCase):
                 game_master= 'Reed',
                 group_name='Looking-For-Game',
                 campaign='Avernus',
-                group_size=5,
+                group_size='5',
                 age_minimum="18+",
                 experience_level="Intermediate",
                 meeting_frequencies="Weekly",
@@ -124,7 +124,7 @@ class TestViews(TestCase):
                 game_master= 'Reed',
                 group_name='Looking-For-Game',
                 campaign='Avernus',
-                group_size=5,
+                group_size='5',
                 age_minimum="18+",
                 experience_level="Intermediate",
                 meeting_frequencies="Weekly",
@@ -162,7 +162,7 @@ class TestViews(TestCase):
                 game_master= 'Reed',
                 group_name='Looking-For-Game',
                 campaign='Avernus',
-                group_size=5,
+                group_size='5',
                 age_minimum="18+",
                 experience_level="Intermediate",
                 meeting_frequencies="Weekly",
@@ -186,4 +186,133 @@ class TestViews(TestCase):
         self.assertTemplateUsed(response, 'core/lfg.html')
         self.assertContains(response, 'TestUser3')
     def Test_sort_age(self):
-
+        group1 = Group.objects.create(
+                group_number=1,
+                game_master= 'Reed',
+                group_name='Looking-For-Game',
+                campaign='Avernus',
+                group_size='5',
+                age_minimum="18+",
+                experience_level="Intermediate",
+                meeting_frequencies="Weekly",
+                group_description="This is a test group for tests.",
+                schedule="Friday at noon"
+                )
+        url = reverse('lfg')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'core/lfg.html')
+        self.assertContains(response, '18+')
+    def Test_sort_exp(self):
+        group1 = Group.objects.create(
+                group_number=1,
+                game_master= 'Reed',
+                group_name='Looking-For-Game',
+                campaign='Avernus',
+                group_size='5',
+                age_minimum="18+",
+                experience_level="Intermediate",
+                meeting_frequencies="Weekly",
+                group_description="This is a test group for tests.",
+                schedule="Friday at noon"
+                )
+        url = reverse('lfg')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'core/lfg.html')
+        self.assertContains(response, 'Intermediate')
+    def Test_sort_players(self):
+        group1 = Group.objects.create(
+                group_number=1,
+                game_master= 'Reed',
+                group_name='Looking-For-Game',
+                campaign='Avernus',
+                group_size='5',
+                age_minimum="18+",
+                experience_level="Intermediate",
+                meeting_frequencies="Weekly",
+                group_description="This is a test group for tests.",
+                schedule="Friday at noon"
+                )
+        url = reverse('lfg')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'core/lfg.html')
+        self.assertContains(response, '4-6')
+    def TestLogin_No_Data(self):
+        login = LoginFrom(data={})
+        url = reverse('login')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'component/login.html')
+        self.assertFalse(login.is_valid())
+    def TestLogin_With_Data(self):
+        login = LoginForm(data={
+            'username' : 'Bobukus'
+            'password' : '246810'
+            })
+        url = reverse('login')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'component/login.html')
+        self.assertTrue(login.is_valid())
+    def TestJoin_No_Data(self):
+        join = JoinForm(data={})
+        url = reverse('join')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'component/join.html')
+        self.assertFalse(join.is_valid())
+    def TestJoin_With_Data(self):
+        join = JoinForm(data={
+            'password' : '246810',
+            'email' : 'Bobukus@gmail.com',
+            })
+        url = reverse('join')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'component/join.html')
+        self.assertTrue(join.is_valid())
+    def Test_logout(self):
+        self.username = 'testUser1'
+        self.password = '12345'
+        user1 = User.objects.create(username=self.username)
+        user1.set_password(self.password)
+        user1.save()
+        user1.logout()
+        url = reverse('home')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'core/lfg.html')
+    def Test_Create_Group(self):
+        group1 = Group.objects.create(
+                group_number=1,
+                game_master= 'Reed',
+                group_name='Looking-For-Game',
+                campaign='Avernus',
+                group_size='5',
+                age_minimum="18+",
+                experience_level="Intermediate",
+                meeting_frequencies="Weekly",
+                group_description="This is a test group for tests.",
+                schedule="Friday at noon"
+                )
+        createGroup = CreateGroupForm(data= {
+            'model' : group1
+            })
+        url = reverse('create_group')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'component/create_group.html')
+        self.assertTrue(createGroup.is_valid())
+    def Test_Group_Page(self):
+        gPage = data{
+                'username': 'Bobulius',
+                'groupname': 'TestCaseQuest',
+                'room_name': 6
+                }
+        url = reverse('group_page')
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'core/group_page.html')
+        self.assertContains(response, 'Bobulius')
