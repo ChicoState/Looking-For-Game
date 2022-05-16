@@ -42,7 +42,18 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core',
     'channels',
-    'user'
+    'user',
+    'django_nose',
+]
+#pip install coverage
+#pip install django-nose
+# Use nose to run all tests
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+
+# Tell nose to measure coverage on the 'core' app
+NOSE_ARGS = [
+    '--with-coverage',
+    '--cover-package=core, user',
 ]
 
 MIDDLEWARE = [
