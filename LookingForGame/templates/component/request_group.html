@@ -3,18 +3,19 @@
   <head>
     {% load static %}
     {% include "component/links.html" %}
+    {% include "component/navbar.html" %}
     <meta charset="utf-8">
     <title></title>
   </head>
-  <body>
-    {% include "component/navbar.html" %}
+  <body style="background-color: rgba(30, 30, 30);">
     <div class="container">
       <div class = "jumbotron">
-        <h1>Join Group</h1>
-        <p>Your request has been sent!</p>
+        <h3 style="color: white; margin-top: 15px; margin-bottom: 20px; font-size: 280%; font-weight: 600; text-align: center;">Your request has been submitted!</h3>
+	<div style="display: flex; align-items: center; justify-content: center;">
         <a href="/lfg">
           <button class="btn btn-primary">Return</button>
-      </a>
+      	</a>
+	</div>
       </div>
     </div>
   </body>
