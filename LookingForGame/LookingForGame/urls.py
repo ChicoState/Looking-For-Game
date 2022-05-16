@@ -37,4 +37,8 @@ urlpatterns = [
     path('user/', user_views.user),
     path('preferences/', user_views.preferences),
     path('profile/groupview/Group/<str:pk>/', core_views.group_page, name='room'),
+    path('inbox/', user_views.ListThreads.as_view(), name='inbox'),
+    path('inbox/new', user_views.CreateThread.as_view(), name='create-thread'),
+    path('inbox/<int:pk>/', user_views.ThreadView.as_view(), name='thread'),
+    path('inbox/<int:pk>/create-message', user_views.CreateMessage.as_view(), name='create-message'),
 ]
