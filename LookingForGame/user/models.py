@@ -9,7 +9,6 @@ class UserProfile(models.Model):
 
 #    def __str__(self):
 #        return str(user)+'s preferences'
-
 class ThreadModel(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='+')
     receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name='+')

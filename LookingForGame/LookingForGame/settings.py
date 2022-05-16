@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
     'django_nose',
+    'crispy_forms',
+    'crispy_bootstrap5',
 ]
 #pip install coverage
 #pip install django-nose
